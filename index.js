@@ -11,13 +11,16 @@ let playerSelection;
 
 function playRound(playerSelection, computerSelection) {
     computerSelection = computerPlay()
-    playerSelection = playerSelection;
+    //playerSelection = playerSelection;
    // playerSelection = prompt()
     //playerSelection = playerSelection.toLowerCase()
     //result = ``
     let result = ``;
     let rpsResult = document.querySelector('#result')
     let par = document.createElement('p')
+    let num = document.createElement('p')
+    let pScore = document.querySelector('.player')
+    let cScore = document.querySelector('.computer')
 
     if (playerSelection == computerSelection) {
         alert("Tie!")
@@ -25,33 +28,41 @@ function playRound(playerSelection, computerSelection) {
         console.log(result)
         //return result
         rpsResult.appendChild(par)
-
     }
     if(playerSelection == 'rock' && computerSelection == 'paper') {
         alert("You lose!")
         par.textContent = `You lose! ${computerSelection} beats ${playerSelection}`
         //console.log(result)
         compScore++
+        num.textContent = compScore
         console.log(compScore)
         //return result
         rpsResult.appendChild(par)
+        cScore.appendChild(num)
+        
     }
     if(playerSelection == 'scizzors' && computerSelection == 'paper') {
         alert("You win!")
         par.textContent = `You win! ${playerSelection} beats ${computerSelection}`
         console.log(result)
         playerScore++
+        num.textContent = playerScore
         console.log(playerScore)
         rpsResult.appendChild(par)
-        return result
+        //return result
+        pScore.appendChild(num)
+
     }
     if(playerSelection == 'paper' && computerSelection == 'rock') {
         alert("You win!")
         par.textContent = `You win! ${playerSelection} beats ${computerSelection}`
         console.log(result)
         playerScore++
+        num.textContent = playerScore
         console.log(playerScore)
         rpsResult.appendChild(par)
+        pScore.appendChild(num)
+
       //  return result
     }
     if(playerSelection == 'scizzors' && computerSelection == 'rock') {
@@ -59,17 +70,23 @@ function playRound(playerSelection, computerSelection) {
         par.textContent = `You lose! ${computerSelection} beats ${playerSelection}`
         console.log(result)
         compScore++
+        num.textContent = compScore
         console.log(compScore)
        // return result
        rpsResult.appendChild(par)
+       cScore.appendChild(num)
+
     }
     if(playerSelection == 'rock' && computerSelection == 'scizzors') {
         alert("You win!")
         par.textContent = `You win! ${playerSelection} beats ${computerSelection}`
         //console.log(result)
         playerScore++
+        num.textContent = playerScore
         console.log(playerScore)
         rpsResult.appendChild(par)
+        pScore.appendChild(num)
+
         //return result
         //console.log(result)
         //rpsResult.appendChild(result)
@@ -80,8 +97,10 @@ function playRound(playerSelection, computerSelection) {
         par.textContent = `You lose! ${computerSelection} beats ${playerSelection}`
         console.log(result)
         compScore++
+        num.textContent = compScore
         console.log(compScore)
         rpsResult.appendChild(par)
+        cScore.appendChild(num)
         //return result
     }
 }
@@ -101,7 +120,6 @@ const buttons = document.querySelectorAll('button');
 buttons.forEach((button) => {
   // and for each one we add a 'click' listener
   button.addEventListener('click', () => {
-   // alert(button.id);
     if (button.id == 'rock' || button.id == 'paper' || button.id == 'scizzors') {
         playerSelection = button.id
         console.log(button.id)
